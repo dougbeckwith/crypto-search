@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CoinItem = ({coin}) => {
+const CoinItem = ({coin, index}) => {
   return (
     <tr
       key={coin.id}

@@ -1,12 +1,13 @@
 import React from 'react'
 import {useContext} from 'react'
 import CoinContext from '../context/CoinsContext'
+import CoinItem from './CoinItem'
 
 const Coins = () => {
-  const {coins} = useContext(CoinContext)
+  const {filteredCoins} = useContext(CoinContext)
   return (
     <>
-      <div className='w-full bg-white py-[50px]'>
+      <div className='w-full bg-white pb-[50px]'>
         <div className='m-auto container flex justify-center'>
           <table className='w-full'>
             <thead>
@@ -22,11 +23,11 @@ const Coins = () => {
                 </th>
               </tr>
             </thead>
-            <CoinList>
-              {coins.map((coin) => (
-                <CoinItem key={coin.id} coin={coin} />
+            <tbody>
+              {filteredCoins.map((coin, index) => (
+                <CoinItem key={coin.id} coin={coin} index={index} />
               ))}
-            </CoinList>
+            </tbody>
           </table>
         </div>
       </div>

@@ -7,14 +7,16 @@ const CoinContext = createContext()
 export const CoinProvider = ({children}) => {
   const [coins, setCoins] = useState([])
   const [loading, setLoading] = useState(true)
+  const [filteredCoins, setFilteredCoins] = useState([])
 
   useEffect(() => {
     axios
       .get(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=25&page=1&sparkline=false'
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false'
       )
       .then((res) => {
         setCoins(res.data)
+        setFilteredCoins(res.data)
         setLoading(false)
       })
       .catch((err) => {
@@ -31,7 +33,12 @@ export const CoinProvider = ({children}) => {
         </div>
       )}
       {!loading && (
-        <CoinContext.Provider value={{coins: coins, setCoins: setCoins}}>
+        <CoinContext.Provider
+          value={{
+            coins: coins,
+            filteredCoins: filteredCoins,
+            setFilteredCoins: setFilteredCoins,
+          }}>
           {children}
         </CoinContext.Provider>
       )}

@@ -1,7 +1,14 @@
 import React from 'react'
+import CoinsTable from '../components/CoinsTable'
+import SearchBar from '../components/shared/SearchBar'
 
 const Coins = () => {
-  return <div>Coins</div>
+  return (
+    <>
+      <SearchBar />
+      <CoinsTable />
+    </>
+  )
 }
 
 export default Coins
