@@ -1,10 +1,7 @@
 import React from 'react'
-// import {useContext} from 'react'
-// import CoinContext from '../context/CoinsContext'
 import {Link} from 'react-router-dom'
 
 const CoinItem = ({coin, index}) => {
-  // const {getCoin} = useContext(CoinContext)
   return (
     <tr
       key={coin.id}

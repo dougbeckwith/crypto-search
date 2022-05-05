@@ -1,6 +1,6 @@
 import React from 'react'
 import {useContext} from 'react'
-import CoinContext from '../context/CoinsContext'
+import CoinContext from '../../context/CoinsContext'
 import CoinItem from './CoinItem'
 
 const Coins = () => {

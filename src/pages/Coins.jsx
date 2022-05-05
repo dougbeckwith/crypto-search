@@ -1,7 +1,6 @@
-import React from 'react'
-import CoinsTable from '../components/CoinsTable'
-import SearchBar from '../components/shared/SearchBar'
-
+import React, {useEffect} from 'react'
+import CoinsTable from '../components/Coins/CoinsTable'
+import SearchBar from '../components/Coins/SearchBar'
 const Coins = () => {
   return (
     <>
