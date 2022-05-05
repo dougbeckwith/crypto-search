@@ -13,6 +13,7 @@ root.render(
       <Route path='/' element={<App />}>
         <Route path='/' element={<Coins />} />
         <Route path='coin/:id' element={<Coin />} />
+        <Route path='notfound' element={<NotFound />} />
         <Route path='*' element={<NotFound />} />
       </Route>
     </Routes>
