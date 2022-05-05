@@ -7,8 +7,4 @@
     body {
       @apply font-[Poppins];
     }
-  
-    li {
-      @apply cursor-pointer;
-    }
   }
