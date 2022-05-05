@@ -1,27 +1,16 @@
 import React, {useEffect, useState} from 'react'
-// import {useContext} from 'react'
 import {useParams} from 'react-router-dom'
-// import CoinContext from '../context/CoinsContext'
 import Spinner from '../components/shared/Spinner'
 import axios from 'axios'
 
 const Coin = () => {
-  // const {coin} = useContext(CoinContext)
+  // 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=cad&days=30&interval=daily'
   const [coinLoading, setIsCoinLoading] = useState(true)
   const [coin, setCoin] = useState([])
 
   const params = useParams()
   console.log(params.id)
 
-  // const getCoinData = async () => {
-  //   await getCoin(params.id)
-  //   setIsCoinLoading(false)
-  // }
-  // console.log('before use effect')
-  // useEffect(() => {
-  //   getCoinData()
-  // }, [])
-  // console.log('after use effect')
   useEffect(() => {
     console.log('effect here')
     console.log(params.id)
@@ -30,7 +19,6 @@ const Coin = () => {
 
   const getCoin = async (coinid) => {
     console.log('start get coin')
-    // setIsCoinLoading(true)
     const response = await axios.get(
       `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
     )

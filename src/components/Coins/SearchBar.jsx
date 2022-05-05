@@ -1,10 +1,6 @@
 import React from 'react'
-import {useContext} from 'react'
-import CoinContext from '../../context/CoinsContext'
 
-const SearchBar = () => {
-  const {coins, setFilteredCoins} = useContext(CoinContext)
-
+const SearchBar = ({setFilteredCoins, coins}) => {
   const handleChange = (e) => {
     setFilteredCoins(
       coins.filter((coin) => {

@@ -1,10 +1,7 @@
 import React from 'react'
-import {useContext} from 'react'
-import CoinContext from '../../context/CoinsContext'
 import CoinItem from './CoinItem'
 
-const Coins = () => {
-  const {filteredCoins} = useContext(CoinContext)
+const Coins = ({filteredCoins}) => {
   return (
     <>
       <div className='w-full bg-white pb-[50px]'>
