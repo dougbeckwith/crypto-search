@@ -10,7 +10,7 @@ const SearchBar = ({setFilteredCoins, coins}) => {
   }
 
   return (
-    <div className='py-7'>
+    <div className='py-7 bg-[#f7f7f5]'>
       <div className='container mx-auto flex justify-center'>
         <div className='xl:w-96'>
           <input
@@ -22,9 +22,9 @@ const SearchBar = ({setFilteredCoins, coins}) => {
           py-2
           text-xl
           font-normal
-          text-gray-700
+          text-black
           bg-white bg-clip-padding
-          border-2 border-solid border-gray-300
+          border-2 border-solid border-gray-400
           rounded
           transition
           ease-in-out

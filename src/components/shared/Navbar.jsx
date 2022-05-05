@@ -19,9 +19,9 @@ const Navbar = () => {
   })
 
   return (
-    <nav className='w-full h-[90px] bg-[#fff] border-b border-[#eee] sticky top-0 z-10'>
+    <nav className='w-full h-[90px] bg-[#ebebe9] border-b border-[#eee] sticky top-0 z-10'>
       <div className='h-full m-auto container flex justify-between items-center px-5'>
-        <div className='text-5xl text-black font-bold'>
+        <div className='text-3xl text-black font-bold'>
           Cry<span className='text-[#118c4f]'>pto</span>
         </div>
         {/* Desktop Links */}
@@ -35,7 +35,7 @@ const Navbar = () => {
 
       {/* Mobile Links */}
       {IsFaTimes && (
-        <ul className='absolute md:hidden top-[90px] left-0 w-full h-[200px] bg-white flex flex-col justify-around items-center'>
+        <ul className='absolute md:hidden top-[90px] left-0 w-full h-[200px] bg-[#f7f7f5] flex flex-col justify-around items-center'>
           {navLinkList}
         </ul>
       )}
