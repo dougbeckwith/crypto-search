@@ -1,6 +1,10 @@
 import React from 'react'
+// import {useContext} from 'react'
+// import CoinContext from '../context/CoinsContext'
+import {Link} from 'react-router-dom'
 
 const CoinItem = ({coin, index}) => {
+  // const {getCoin} = useContext(CoinContext)
   return (
     <tr
       key={coin.id}
@@ -13,7 +17,7 @@ const CoinItem = ({coin, index}) => {
         </div>
       </td>
       <td className='hidden lg:table-cell'>{coin.symbol.toUpperCase()}</td>
-      <td className='text-right pr-2'>${coin.current_price}</td>
+      <td className='text-right pr-2 md:pr-0'>${coin.current_price}</td>
       <td className='text-right hidden lg:table-cell'>
         ${coin.total_volume.toLocaleString('en-US')}
       </td>
@@ -25,8 +29,13 @@ const CoinItem = ({coin, index}) => {
         }>
         {coin.price_change_percentage_24h.toFixed(2)}%
       </td>
-      <td className='text-right hidden md:table-cell pr-2'>
+      <td className='text-right hidden md:table-cell'>
         ${coin.market_cap.toLocaleString('en-US')}
+      </td>
+      <td className='text-right hidden sm:table-cell  pr-2'>
+        <Link to={`coin/${coin.id}`}>
+          <button>View More</button>
+        </Link>
       </td>
     </tr>
   )
