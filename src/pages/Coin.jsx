@@ -12,6 +12,7 @@ const Coin = () => {
 
   useEffect(() => {
     getCoin(params.id)
+    // eslint-disable-next-line
   }, [])
 
   const getCoin = async (coinid) => {

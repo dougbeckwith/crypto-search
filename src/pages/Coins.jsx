@@ -23,6 +23,7 @@ const Coins = () => {
 
   useEffect(() => {
     getCoins()
+    // eslint-disable-next-line
   }, [])
 
   return (
