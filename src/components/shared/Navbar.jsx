@@ -11,7 +11,7 @@ const Navbar = () => {
 
   const navLinks = [
     {title: 'Coins', id: 1, link: '/'},
-    {title: 'WatchList', id: 2, link: '../watchlist'},
+    {title: 'Watchlist', id: 2, link: '../watchlist'},
   ]
   const navLinkList = navLinks.map((item) => {
     return (

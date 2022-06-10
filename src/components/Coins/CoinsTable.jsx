@@ -25,7 +25,7 @@ const Coins = ({filteredCoins}) => {
                 <th className='text-right hidden xl:table-cell font-semibold'>
                   Marketcap
                 </th>
-                <th className='text-center pr-2 font-semibold'>Links</th>
+                <th className='text-right pr-2 font-semibold'>Watch</th>
               </tr>
             </thead>
             <tbody>

@@ -4,6 +4,7 @@ import SearchBar from '../components/Coins/SearchBar'
 import Spinner from '../components/shared/Spinner'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import Header from '../components/Coins/Header'
 
 const Coins = () => {
   const [coins, setCoins] = useState([])
@@ -36,6 +37,7 @@ const Coins = () => {
         <Spinner />
       ) : (
         <>
+          <Header />
           <SearchBar setFilteredCoins={setFilteredCoins} coins={coins} />
           <CoinsTable filteredCoins={filteredCoins} />
         </>

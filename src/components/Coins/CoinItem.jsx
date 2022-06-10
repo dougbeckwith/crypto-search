@@ -2,10 +2,19 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import Button from '../shared/Button'
 import {v4 as uuidv4} from 'uuid'
+import {useNavigate} from 'react-router-dom'
 
 const CoinItem = ({coin, index}) => {
+  const navigate = useNavigate()
+  const handleClick = (id) => {
+    navigate(id)
+  }
+
   return (
-    <tr key={uuidv4()} className='border-b h-[65px] text-lg'>
+    <tr
+      onClick={() => handleClick(coin.id)}
+      key={uuidv4()}
+      className='border-b h-[65px] text-lg cursor-pointer hover:bg-slate-100'>
       <td className='pl-2'>{index + 1}</td>
       <td>
         <div className='flex items-center'>
@@ -15,7 +24,7 @@ const CoinItem = ({coin, index}) => {
       </td>
       <td className='hidden sm:table-cell'>{coin.symbol.toUpperCase()}</td>
       <td className='hidden md:table-cell text-right pr-2 md:pr-0'>
-        ${coin.current_price}
+        ${coin.current_price.toLocaleString('en-US')}
       </td>
       <td className='text-right hidden 2xl:table-cell'>
         ${coin.total_volume.toLocaleString('en-US')}
