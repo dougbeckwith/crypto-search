@@ -24,12 +24,12 @@ const SearchBar = ({setFilteredCoins, coins}) => {
           font-normal
           text-black
           bg-white bg-clip-padding
-          border-2 border-solid border-gray-400
+          border-2 border-solid border-slate-400
           rounded
           transition
           ease-in-out
           m-0
-          focus:text-gray-700 focus:bg-white focus:border-[#118c4f] focus:border-2 focus:outline-none
+          focus:text-gray-700 focus:bg-white focus:border-[#595cfd] focus:border-2 focus:outline-none
         '
             placeholder='Search'
             onChange={handleChange}

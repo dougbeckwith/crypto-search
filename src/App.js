@@ -8,6 +8,7 @@ import Layout from './components/shared/Layout'
 import NotFound from './pages/NotFound'
 
 function App() {
+  // To Do Fix Bug Browser Forward/Back buttons not working
   return (
     <>
       <BrowserRouter>

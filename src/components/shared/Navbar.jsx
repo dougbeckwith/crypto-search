@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {FaBars, FaTimes} from 'react-icons/fa'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 const Navbar = () => {
   // State And Function Toggle Nav Menu
@@ -16,7 +16,16 @@ const Navbar = () => {
   const navLinkList = navLinks.map((item) => {
     return (
       <li key={item.id} className='px-3 font-medium'>
-        <Link to={item.link}>{item.title}</Link>
+        {/* <Link to={item.link}>{item.title}</Link> */}
+        <NavLink
+          className={(navData) =>
+            navData.isActive
+              ? 'border-b-2 border-[#5e61fa] text-lg'
+              : 'hover:border-b hover:border-[#5e61fa] duration-200 text-lg'
+          }
+          to={item.link}>
+          {item.title}
+        </NavLink>
       </li>
     )
   })
@@ -25,7 +34,7 @@ const Navbar = () => {
     <nav className='w-full h-[90px] bg-[#ebebe9] border-b border-[#eee] sticky top-0 z-10'>
       <div className='h-full m-auto container flex justify-between items-center px-5'>
         <div className='text-3xl text-black font-bold'>
-          Cry<span className='text-[#118c4f]'>pto</span>
+          <span className='text-[#5e61fa]'>Crypto</span> Tracker
         </div>
         {/* Desktop Links */}
         <ul className='hidden md:flex'>{navLinkList}</ul>

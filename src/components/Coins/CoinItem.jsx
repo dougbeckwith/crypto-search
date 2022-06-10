@@ -42,7 +42,7 @@ const CoinItem = ({coin, index}) => {
       </td>
       <td className='text-right pr-2'>
         <Link to={`${coin.id}`}>
-          <Button text={'View'} />
+          <Button text={'Add'} />
         </Link>
       </td>
     </tr>

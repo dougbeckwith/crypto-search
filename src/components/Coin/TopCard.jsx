@@ -1,9 +1,8 @@
 import React from 'react'
 
 const CoinTopCard = ({coin}) => {
-  console.log(coin)
   return (
-    <div className='w-full rounded-md py-3 px-3 mb-2 bg-[white] flex items-center justify-between'>
+    <div className='w-full rounded-md py-3 px-3 mb-2 bg-[#f7f7f5] flex items-center justify-between'>
       <div>
         <img className='w-20' src={coin.image.large} alt='' />
       </div>

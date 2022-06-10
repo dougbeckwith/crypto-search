@@ -8,15 +8,16 @@ import {useNavigate} from 'react-router-dom'
 
 const Coin = () => {
   const [coinLoading, setIsCoinLoading] = useState(true)
+  const [coinChartData, setCoinChartData] = useState([])
   const [coin, setCoin] = useState([])
   const {coinId} = useParams()
   const navigate = useNavigate()
 
   useEffect(() => {
-    const getCoin = async (coinid) => {
+    const getCoin = async (coinId) => {
       try {
         const response = await axios.get(
-          `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
+          `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
         )
         setCoin(response.data)
         setIsCoinLoading(false)
@@ -29,6 +30,21 @@ const Coin = () => {
     // eslint-disable-next-line
   }, [])
 
+  useEffect(() => {
+    const getCoinChartData = async (coinId) => {
+      try {
+        const response = await axios.get(
+          `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=cad&days=89&interval=daily`
+        )
+        setCoinChartData(response.data.prices)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getCoinChartData(coinId)
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <>
       {coinLoading && (
@@ -38,12 +54,12 @@ const Coin = () => {
           </div>
         </div>
       )}
-      <div className='w-full bg-[#f7f7f5]'>
+      <div className='w-full bg-[#f7f7f5] min-h-screen max-h-min '>
         <div className='container m-auto pt-10'>
           {!coinLoading && (
             <>
               <TopCard coin={coin} />
-              <Chart />
+              <Chart coinChartData={coinChartData} coin={coin} />
             </>
           )}
         </div>
