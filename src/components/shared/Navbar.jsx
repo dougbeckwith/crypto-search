@@ -9,7 +9,10 @@ const Navbar = () => {
     setIsFaTimes(!IsFaTimes)
   }
 
-  const navLinks = [{title: 'Coins', id: 1, link: '/'}]
+  const navLinks = [
+    {title: 'Coins', id: 1, link: '/'},
+    {title: 'WatchList', id: 2, link: '../watchlist'},
+  ]
   const navLinkList = navLinks.map((item) => {
     return (
       <li key={item.id} className='px-3 font-medium'>

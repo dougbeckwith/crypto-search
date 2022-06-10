@@ -3,12 +3,14 @@ import CoinsTable from '../components/Coins/CoinsTable'
 import SearchBar from '../components/Coins/SearchBar'
 import Spinner from '../components/shared/Spinner'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 const Coins = () => {
   const [coins, setCoins] = useState([])
   const [filteredCoins, setFilteredCoins] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   console.log(coins)
+  const navigate = useNavigate()
 
   const coinsUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false`
   const getCoins = async () => {
@@ -18,6 +20,7 @@ const Coins = () => {
       setFilteredCoins(response.data)
       setIsLoading(false)
     } catch (err) {
+      navigate('/notfound')
       console.log(err)
     }
   }

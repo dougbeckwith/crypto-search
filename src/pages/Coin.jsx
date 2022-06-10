@@ -4,26 +4,31 @@ import Spinner from '../components/shared/Spinner'
 import axios from 'axios'
 import TopCard from '../components/Coin/TopCard'
 import Chart from '../components/Coin/Chart'
+import {useNavigate} from 'react-router-dom'
 
 const Coin = () => {
-  // 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=cad&days=30&interval=daily'
   const [coinLoading, setIsCoinLoading] = useState(true)
   const [coin, setCoin] = useState([])
-
-  const params = useParams()
+  const {coinId} = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    getCoin(params.id)
+    const getCoin = async (coinid) => {
+      try {
+        const response = await axios.get(
+          `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
+        )
+        setCoin(response.data)
+        setIsCoinLoading(false)
+      } catch (err) {
+        navigate('/notfound')
+        console.log(err)
+      }
+    }
+    getCoin(coinId)
     // eslint-disable-next-line
   }, [])
 
-  const getCoin = async (coinid) => {
-    const response = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
-    )
-    setCoin(response.data)
-    setIsCoinLoading(false)
-  }
   return (
     <>
       {coinLoading && (
@@ -37,7 +42,8 @@ const Coin = () => {
         <div className='container m-auto pt-10'>
           {!coinLoading && (
             <>
-              <TopCard coin={coin} /> <Chart />
+              <TopCard coin={coin} />
+              <Chart />
             </>
           )}
         </div>

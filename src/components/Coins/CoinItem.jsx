@@ -1,10 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Button from '../shared/Button'
+import {v4 as uuidv4} from 'uuid'
 
 const CoinItem = ({coin, index}) => {
   return (
-    <tr key={coin.id} className='border-b h-[65px] text-lg'>
+    <tr key={uuidv4()} className='border-b h-[65px] text-lg'>
       <td className='pl-2'>{index + 1}</td>
       <td>
         <div className='flex items-center'>
@@ -31,7 +32,7 @@ const CoinItem = ({coin, index}) => {
         ${coin.market_cap.toLocaleString('en-US')}
       </td>
       <td className='text-right pr-2'>
-        <Link to={`coin/${coin.id}`}>
+        <Link to={`${coin.id}`}>
           <Button text={'View'} />
         </Link>
       </td>

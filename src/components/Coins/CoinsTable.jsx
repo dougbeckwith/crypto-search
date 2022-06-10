@@ -1,5 +1,6 @@
 import React from 'react'
 import CoinItem from './CoinItem'
+import {v4 as uuidv4} from 'uuid'
 
 const Coins = ({filteredCoins}) => {
   return (
@@ -29,7 +30,7 @@ const Coins = ({filteredCoins}) => {
             </thead>
             <tbody>
               {filteredCoins.map((coin, index) => (
-                <CoinItem key={coin.id} coin={coin} index={index} />
+                <CoinItem key={uuidv4()} coin={coin} index={index} />
               ))}
             </tbody>
           </table>
