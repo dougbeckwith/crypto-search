@@ -2,7 +2,7 @@ import React from 'react'
 import CoinItem from './CoinItem'
 import {v4 as uuidv4} from 'uuid'
 
-const Coins = ({filteredCoins}) => {
+const Coins = ({filteredCoins, setShowBanner, showBanner}) => {
   return (
     <>
       <div className='w-full bg-[#f7f7f5] pb-[50px] min-h-screen'>
@@ -30,7 +30,13 @@ const Coins = ({filteredCoins}) => {
             </thead>
             <tbody>
               {filteredCoins.map((coin, index) => (
-                <CoinItem key={uuidv4()} coin={coin} index={index} />
+                <CoinItem
+                  key={uuidv4()}
+                  coin={coin}
+                  index={index}
+                  setShowBanner={setShowBanner}
+                  showBanner={showBanner}
+                />
               ))}
             </tbody>
           </table>

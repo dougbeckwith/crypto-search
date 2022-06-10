@@ -6,7 +6,7 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import Header from '../components/Coins/Header'
 
-const Coins = () => {
+const Coins = ({setShowBanner, showBanner}) => {
   const [coins, setCoins] = useState([])
   const [filteredCoins, setFilteredCoins] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -39,7 +39,11 @@ const Coins = () => {
         <>
           <Header />
           <SearchBar setFilteredCoins={setFilteredCoins} coins={coins} />
-          <CoinsTable filteredCoins={filteredCoins} />
+          <CoinsTable
+            filteredCoins={filteredCoins}
+            setShowBanner={setShowBanner}
+            showBanner={showBanner}
+          />
         </>
       )}
     </>

@@ -1,20 +1,43 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import Button from '../shared/Button'
 import {v4 as uuidv4} from 'uuid'
 import {useNavigate} from 'react-router-dom'
 
 const CoinItem = ({coin, index}) => {
   const navigate = useNavigate()
-  const handleClick = (id) => {
-    navigate(id)
+
+  function saveDataToLocalStorage(coin) {
+    var a = []
+    // Parse the serialized data back into an aray of objects
+    a = JSON.parse(localStorage.getItem('watchListCoins')) || []
+    // Push the new data (whether it be an object or anything else) onto the array
+    const isIn = a.some((item) => {
+      return item.id === coin.id
+    })
+    if (isIn === true) {
+      // Re-serialize the array back into a string and store it in localStorage
+      localStorage.setItem('watchListCoins', JSON.stringify(a))
+    } else {
+      a.push(coin)
+      // Re-serialize the array back into a string and store it in localStorage
+      localStorage.setItem('watchListCoins', JSON.stringify(a))
+    }
+  }
+
+  const handleClick = (e, id) => {
+    if (e.target.textContent === 'Add' && e.target.tagName === 'BUTTON') {
+      console.log(coin.id)
+      saveDataToLocalStorage(coin)
+    } else {
+      navigate(id)
+    }
   }
 
   return (
     <tr
-      onClick={() => handleClick(coin.id)}
+      onClick={(e) => handleClick(e, coin.id)}
       key={uuidv4()}
-      className='border-b h-[65px] text-lg cursor-pointer hover:bg-slate-100'>
+      className='border-b h-[65px] text-lg  cursor-pointer hover:bg-slate-100'>
       <td className='pl-2'>{index + 1}</td>
       <td>
         <div className='flex items-center'>
@@ -41,9 +64,7 @@ const CoinItem = ({coin, index}) => {
         ${coin.market_cap.toLocaleString('en-US')}
       </td>
       <td className='text-right pr-2'>
-        <Link to={`${coin.id}`}>
-          <Button text={'Add'} />
-        </Link>
+        <Button text={'Add'} />
       </td>
     </tr>
   )
