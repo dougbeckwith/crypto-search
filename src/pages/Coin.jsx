@@ -14,34 +14,26 @@ const Coin = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const getCoin = async (coinId) => {
+    const fetchData = async (coinId) => {
+      const requestOne = axios.get(
+        `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=cad&days=89&interval=daily`
+      )
+      const requestTwo = axios.get(
+        `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
+      )
       try {
-        const response = await axios.get(
-          `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
-        )
-        setCoin(response.data)
+        const response = await axios.all([requestOne, requestTwo])
+        const chartResData = response[0].data
+        const coinData = response[1].data
+        setCoin(coinData)
+        setCoinChartData(chartResData.prices)
         setIsCoinLoading(false)
       } catch (err) {
         navigate('/notfound')
         console.log(err)
       }
     }
-    getCoin(coinId)
-    // eslint-disable-next-line
-  }, [])
-
-  useEffect(() => {
-    const getCoinChartData = async (coinId) => {
-      try {
-        const response = await axios.get(
-          `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=cad&days=89&interval=daily`
-        )
-        setCoinChartData(response.data.prices)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    getCoinChartData(coinId)
+    fetchData(coinId)
     // eslint-disable-next-line
   }, [])
 

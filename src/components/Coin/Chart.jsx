@@ -8,6 +8,8 @@ const Graph = ({coinChartData, coin}) => {
   const [priceList, setPriceList] = useState([])
 
   const sortData = (data) => {
+    console.log('sort data')
+    console.log(data)
     data.forEach((item) => {
       setPriceList((prevList) => {
         return [...prevList, item[1]]
@@ -19,6 +21,7 @@ const Graph = ({coinChartData, coin}) => {
   }
 
   useEffect(() => {
+    console.log('graph use fired')
     sortData(coinChartData)
     // eslint-disable-next-line
   }, [])
