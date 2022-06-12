@@ -2,15 +2,20 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import CoinCard from '../components/WatchList/CoinCard'
 import {v4 as uuidv4} from 'uuid'
+import EmptyWatchListMessage from '../components/WatchList/EmptyWatchList'
 
 const WatchList = () => {
   const [watchListCoins, setWatchListCoins] = useState([])
+  const [showMessage, setShowMessage] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [reRender, setReRender] = useState(true)
 
   useEffect(() => {
     const setData = async () => {
       const coins = await JSON.parse(localStorage.getItem('watchListCoins'))
+      if (coins.length === 0) {
+        setShowMessage(true)
+      }
       setWatchListCoins(coins)
       setIsLoading(false)
     }
@@ -36,6 +41,7 @@ const WatchList = () => {
     <>
       <div className='w-full bg-[#f7f7f5] min-h-screen max-h-min '>
         <div className='container m-auto pt-10'>
+          {showMessage && <EmptyWatchListMessage />}
           {!isLoading &&
             watchListCoins.map((coin) => {
               return (

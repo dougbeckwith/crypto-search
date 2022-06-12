@@ -15,9 +15,9 @@ const Navbar = () => {
   ]
   const navLinkList = navLinks.map((item) => {
     return (
-      <li key={item.id} className='px-3 font-medium'>
-        {/* <Link to={item.link}>{item.title}</Link> */}
+      <li key={item.id} className='px-3 font-medium py-10'>
         <NavLink
+          onClick={toggleIcon}
           className={(navData) =>
             navData.isActive
               ? 'border-b-2 border-[#5e61fa] text-lg'
@@ -47,7 +47,7 @@ const Navbar = () => {
 
       {/* Mobile Links */}
       {IsFaTimes && (
-        <ul className='absolute md:hidden top-[90px] left-0 w-full h-[200px] bg-[#f7f7f5] flex flex-col justify-around items-center'>
+        <ul className='absolute md:hidden top-[90px] left-0 w-full h-screen bg-[#f7f7f5] flex flex-col items-center'>
           {navLinkList}
         </ul>
       )}

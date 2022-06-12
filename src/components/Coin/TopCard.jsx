@@ -7,14 +7,14 @@ const CoinTopCard = ({coin}) => {
         <img className='w-20' src={coin.image.large} alt='' />
       </div>
       <div className=''>
-        <p className='text-xl'>
+        <p className='text-lg md:text-xl'>
           {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}
         </p>
-        <p className='text-lg'>{coin.symbol.toUpperCase()}</p>
+        <p className='text-md md:text-lg'>{coin.symbol.toUpperCase()}</p>
       </div>
       <div className=''>
-        <p className='text-xl'>Price</p>
-        <p className='text-lg'>
+        <p className='text-lg md:text-xl'>Price</p>
+        <p className='text-md md:text-lg'>
           ${coin.market_data.current_price.cad.toLocaleString('en-US')}
         </p>
       </div>
