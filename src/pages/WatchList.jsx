@@ -3,12 +3,14 @@ import {useState, useEffect} from 'react'
 import CoinCard from '../components/WatchList/CoinCard'
 import {v4 as uuidv4} from 'uuid'
 import EmptyWatchListMessage from '../components/WatchList/EmptyWatchList'
+import {useNavigate} from 'react-router-dom'
 
 const WatchList = () => {
   const [watchListCoins, setWatchListCoins] = useState([])
   const [showMessage, setShowMessage] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [reRender, setReRender] = useState(true)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const setData = async () => {
@@ -37,6 +39,14 @@ const WatchList = () => {
     saveDataToLocalStorage(coin)
   }
 
+  const handleClick = (e, id) => {
+    if (e.target.tagName === 'svg') {
+      return
+    } else {
+      navigate(`/${id}`)
+    }
+  }
+
   return (
     <>
       <div className='w-full bg-[#f7f7f5] min-h-screen max-h-min '>
@@ -49,6 +59,7 @@ const WatchList = () => {
                   key={uuidv4()}
                   coin={coin}
                   handleDelete={handleDelete}
+                  handleClick={handleClick}
                 />
               )
             })}

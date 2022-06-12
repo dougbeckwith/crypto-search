@@ -1,9 +1,11 @@
 import React from 'react'
 import {CgClose} from 'react-icons/cg'
 
-const CoinCard = ({coin, handleDelete}) => {
+const CoinCard = ({coin, handleDelete, handleClick}) => {
   return (
-    <div className='shadow-lg w-full rounded-md py-3 px-3 mb-2 bg-[#f7f7f5] flex items-center justify-between'>
+    <div
+      onClick={(e) => handleClick(e, coin.id)}
+      className='shadow-lg w-full rounded-md py-3 px-3 mb-2 bg-[#f7f7f5] flex items-center justify-between hover:bg-[#ebebe9] hover:cursor-pointer'>
       <div className='w-full flex items-center justify-between'>
         <div>
           <img className='w-12 md:w-20' src={coin.image} alt='' />
