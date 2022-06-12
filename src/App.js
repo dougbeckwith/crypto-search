@@ -6,27 +6,16 @@ import WatchList from './pages/WatchList'
 import Coin from './pages/Coin'
 import Layout from './components/shared/Layout'
 import NotFound from './pages/NotFound'
-import {useState} from 'react'
 
 function App() {
-  const [showBanner, setShowBanner] = useState(true)
-  // To Do Fix Bug Browser Forward/Back buttons not working
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />}>
-            <Route
-              index
-              element={
-                <Coins setShowBanner={setShowBanner} showBanner={showBanner} />
-              }
-            />
+            <Route index element={<Coins />} />
             <Route path=':coinId' element={<Coin />} />
-            <Route
-              path='watchlist'
-              element={<WatchList showBanner={showBanner} />}
-            />
+            <Route path='watchlist' element={<WatchList />} />
           </Route>
           <Route path='/notfound' element={<Layout />}>
             <Route index element={<NotFound />} />

@@ -23,13 +23,13 @@ const WatchList = () => {
   }, [reRender])
 
   function saveDataToLocalStorage(coin) {
-    let a = []
-    a = JSON.parse(localStorage.getItem('watchListCoins'))
-    let updateA = a.filter((item) => {
+    let coins = []
+    coins = JSON.parse(localStorage.getItem('watchListCoins'))
+    let filteredCoins = coins.filter((item) => {
       return item.id !== coin.id
     })
 
-    localStorage.setItem('watchListCoins', JSON.stringify(updateA))
+    localStorage.setItem('watchListCoins', JSON.stringify(filteredCoins))
     setReRender(!reRender)
   }
 

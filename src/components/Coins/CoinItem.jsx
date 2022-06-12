@@ -1,43 +1,57 @@
 import React from 'react'
-import Button from '../shared/Button'
 import {v4 as uuidv4} from 'uuid'
 import {useNavigate} from 'react-router-dom'
+import {useState} from 'react'
 
 const CoinItem = ({coin, index}) => {
   const navigate = useNavigate()
+  const [hover, setHover] = useState(false)
 
   function saveDataToLocalStorage(coin) {
-    var a = []
-    // Parse the serialized data back into an aray of objects
-    a = JSON.parse(localStorage.getItem('watchListCoins')) || []
-    // Push the new data (whether it be an object or anything else) onto the array
-    const isIn = a.some((item) => {
+    var coins = []
+    coins = JSON.parse(localStorage.getItem('watchListCoins')) || []
+    const isIn = coins.some((item) => {
       return item.id === coin.id
     })
     if (isIn === true) {
-      // Re-serialize the array back into a string and store it in localStorage
-      localStorage.setItem('watchListCoins', JSON.stringify(a))
+      localStorage.setItem('watchListCoins', JSON.stringify(coins))
     } else {
-      a.push(coin)
-      // Re-serialize the array back into a string and store it in localStorage
-      localStorage.setItem('watchListCoins', JSON.stringify(a))
+      coins.push(coin)
+      localStorage.setItem('watchListCoins', JSON.stringify(coins))
     }
   }
 
   const handleClick = (e, id) => {
     if (e.target.textContent === 'Add' && e.target.tagName === 'BUTTON') {
-      console.log(coin.id)
       saveDataToLocalStorage(coin)
     } else {
       navigate(id)
     }
   }
 
+  const handleMouseOver = (e) => {
+    if (e.target.textContent === 'Add' && e.target.tagName === 'BUTTON') {
+      setHover(false)
+    } else if (e.target.className === 'text-right pr-2 button') {
+      setHover(false)
+    } else {
+      setHover(true)
+    }
+  }
+  const handleMouseLeave = () => {
+    setHover(false)
+  }
   return (
     <tr
+      onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseLeave}
       onClick={(e) => handleClick(e, coin.id)}
       key={uuidv4()}
-      className='border-b h-[65px] text-lg  cursor-pointer hover:bg-slate-100'>
+      className={
+        hover
+          ? 'border-b h-[65px] text-lg  cursor-pointer hover:bg-[#ebebe9]'
+          : 'border-b h-[65px] text-lg'
+      }>
       <td className='pl-2'>{index + 1}</td>
       <td>
         <div className='flex items-center'>
@@ -63,8 +77,10 @@ const CoinItem = ({coin, index}) => {
       <td className='text-right hidden xl:table-cell'>
         ${coin.market_cap.toLocaleString('en-US')}
       </td>
-      <td className='text-right pr-2'>
-        <Button text={'Add'} />
+      <td className='text-right pr-2 button'>
+        <button className='bg-[#f7f7f5] px-4 py-1.5 rounded-md border border-[#595cfd] text-[#595cfd] text-[18px] hover:shadow-xl hover:text-white hover:bg-[#595cfd]'>
+          Add
+        </button>
       </td>
     </tr>
   )

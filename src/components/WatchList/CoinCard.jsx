@@ -6,7 +6,7 @@ const CoinCard = ({coin, handleDelete}) => {
     <div className='shadow-lg w-full rounded-md py-3 px-3 mb-2 bg-[#f7f7f5] flex items-center justify-between'>
       <div className='w-full flex items-center justify-between'>
         <div>
-          <img className='w-20' src={coin.image} alt='' />
+          <img className='w-12 md:w-20' src={coin.image} alt='' />
         </div>
         <div className=''>
           <p className='hidden sm:block text-xl'>

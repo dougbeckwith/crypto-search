@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <nav className='w-full h-[90px] bg-[#ebebe9] border-b border-[#eee] sticky top-0 z-10'>
       <div className='h-full m-auto container flex justify-between items-center px-5'>
-        <div className='text-3xl text-black font-bold'>
+        <div className='text-xl sm:text-2xl md:text-3xl text-black font-bold'>
           <span className='text-[#5e61fa]'>Crypto</span> Tracker
         </div>
         {/* Desktop Links */}

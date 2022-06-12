@@ -2,7 +2,7 @@ import React from 'react'
 import CoinItem from './CoinItem'
 import {v4 as uuidv4} from 'uuid'
 
-const Coins = ({filteredCoins, setShowBanner, showBanner}) => {
+const Coins = ({filteredCoins}) => {
   return (
     <>
       <div className='w-full bg-[#f7f7f5] pb-[50px] min-h-screen'>
@@ -10,33 +10,29 @@ const Coins = ({filteredCoins, setShowBanner, showBanner}) => {
           <table className='w-full'>
             <thead>
               <tr className='border-b text-left text-xl font-normal'>
-                <th className='pl-2 font-normal'>#</th>
-                <th className='font-semibold'>Name</th>
-                <th className='hidden sm:table-cell font-semibold'>Ticker</th>
-                <th className='text-right hidden md:table-cell font-semibold'>
+                <th className='text-lg pl-2 font-normal'>#</th>
+                <th className='text-lg font-semibold'>Name</th>
+                <th className='text-lg hidden sm:table-cell font-semibold'>
+                  Ticker
+                </th>
+                <th className='text-lg text-right hidden md:table-cell font-semibold'>
                   Price CAD
                 </th>
-                <th className='text-right hidden 2xl:table-cell font-semibold'>
+                <th className='text-lg text-right hidden 2xl:table-cell font-semibold'>
                   Volume
                 </th>
-                <th className='text-right hidden lg:table-cell font-semibold'>
+                <th className='text-lg text-right hidden lg:table-cell font-semibold'>
                   24H %
                 </th>
-                <th className='text-right hidden xl:table-cell font-semibold'>
+                <th className='text-lg text-right hidden xl:table-cell font-semibold'>
                   Marketcap
                 </th>
-                <th className='text-right pr-2 font-semibold'>Watch</th>
+                <th className='text-lg text-right pr-2 font-semibold'>Watch</th>
               </tr>
             </thead>
             <tbody>
               {filteredCoins.map((coin, index) => (
-                <CoinItem
-                  key={uuidv4()}
-                  coin={coin}
-                  index={index}
-                  setShowBanner={setShowBanner}
-                  showBanner={showBanner}
-                />
+                <CoinItem key={uuidv4()} coin={coin} index={index} />
               ))}
             </tbody>
           </table>
