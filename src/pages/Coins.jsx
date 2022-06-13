@@ -6,7 +6,7 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import Header from '../components/Coins/Header'
 
-const Coins = ({setShowBanner, showBanner}) => {
+const Coins = () => {
   const [coins, setCoins] = useState([])
   const [filteredCoins, setFilteredCoins] = useState([])
   const [isLoading, setIsLoading] = useState(true)
