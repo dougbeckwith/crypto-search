@@ -5,6 +5,9 @@ It uses the returned data to display information about each cryptocurrency.
 You can filter cryptocurrencies,view charts, and make a watchlist.
 
 ![](images/crypto-tracker-1.png)
+![](images/crypto-tracker-2.png)
+![](images/crypto-tracker-3.png)
+![](images/crypto-tracker-4.png)
 
 
 ### Built with
