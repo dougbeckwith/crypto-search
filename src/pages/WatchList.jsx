@@ -40,7 +40,8 @@ const WatchList = () => {
   }
 
   const handleClick = (e, id) => {
-    if (e.target.tagName === 'svg') {
+    console.log(e.target)
+    if (e.target.tagName === 'svg' || e.target.classList.contains('delete')) {
       return
     } else {
       navigate(`/${id}`)

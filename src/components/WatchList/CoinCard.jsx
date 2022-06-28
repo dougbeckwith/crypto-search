@@ -48,12 +48,10 @@ const CoinCard = ({coin, handleDelete, handleClick}) => {
             {coin.ath_change_percentage.toFixed(2)}
           </p>
         </div>
-        <div className='border-2 border-transparent hover:cursor-pointer hover:border-2 hover:border-[#5e61fa] hover:rounded'>
-          <CgClose
-            size={30}
-            color='#5e61fa'
-            onClick={() => handleDelete(coin)}
-          />
+        <div
+          onClick={() => handleDelete(coin)}
+          className='delete border-2 border-transparent hover:cursor-pointer hover:border-2 hover:border-[#5e61fa] hover:rounded'>
+          <CgClose size={30} color='#5e61fa' />
         </div>
       </div>
     </div>
