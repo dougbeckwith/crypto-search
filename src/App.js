@@ -1,11 +1,11 @@
 import React from 'react'
 import './index.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Coins from './pages/Coins'
-import WatchList from './pages/WatchList'
-import Coin from './pages/Coin'
+import Coins from './pages/coins/Coins'
+import WatchList from './pages/watchlist/WatchList'
+import Coin from './pages/coin/Coin'
 import Layout from './components/shared/Layout'
-import NotFound from './pages/NotFound'
+import NotFound from './pages/notfound/NotFound'
 
 function App() {
   return (

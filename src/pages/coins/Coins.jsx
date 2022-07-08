@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import CoinsTable from '../components/Coins/CoinsTable'
-import SearchBar from '../components/Coins/SearchBar'
-import Spinner from '../components/shared/Spinner'
+import CoinsTable from './components/CoinsTable'
+import SearchBar from './components/SearchBar'
+import Spinner from '../../components/shared/Spinner'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-import Header from '../components/Coins/Header'
+import Header from './components/Header'
 
 const Coins = () => {
   const [coins, setCoins] = useState([])

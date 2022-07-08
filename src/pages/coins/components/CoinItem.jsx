@@ -7,23 +7,23 @@ const CoinItem = ({coin, index}) => {
   const navigate = useNavigate()
   const [hover, setHover] = useState(false)
 
-  function saveDataToLocalStorage(coin) {
-    var coins = []
+  function saveDataToLocalStorage(coinId) {
+    let coins = []
     coins = JSON.parse(localStorage.getItem('watchListCoins')) || []
     const isIn = coins.some((item) => {
-      return item.id === coin.id
+      return item === coinId
     })
     if (isIn === true) {
       localStorage.setItem('watchListCoins', JSON.stringify(coins))
     } else {
-      coins.push(coin)
+      coins.push(coinId)
       localStorage.setItem('watchListCoins', JSON.stringify(coins))
     }
   }
 
   const handleClick = (e, id) => {
     if (e.target.textContent === 'Add' && e.target.tagName === 'BUTTON') {
-      saveDataToLocalStorage(coin)
+      saveDataToLocalStorage(coin.id)
     } else {
       navigate(id)
     }

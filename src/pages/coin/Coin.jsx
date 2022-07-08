@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import Spinner from '../components/shared/Spinner'
+import Spinner from '../../components/shared/Spinner'
 import axios from 'axios'
-import TopCard from '../components/Coin/TopCard'
-import Chart from '../components/Coin/Chart'
+import TopCard from './components/TopCard'
+import Chart from './components/Chart'
 import {useNavigate} from 'react-router-dom'
 
 const Coin = () => {

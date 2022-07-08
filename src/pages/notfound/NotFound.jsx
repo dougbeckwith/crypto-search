@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Button from '../components/shared/Button'
+import Button from '../../components/shared/Button'
 
 const NotFound = () => {
   return (
