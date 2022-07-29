@@ -49,8 +49,8 @@ const CoinItem = ({coin, index}) => {
       key={uuidv4()}
       className={
         hover
-          ? 'border-b h-[65px] text-lg  cursor-pointer hover:bg-[#ebebe9]'
-          : 'border-b h-[65px] text-lg'
+          ? 'border-b border-[#525252] h-[65px] text-lg  cursor-pointer hover:bg-[#ebebe9]'
+          : 'border-b border-[#525252] h-[65px] text-lg'
       }>
       <td className='pl-2'>{index + 1}</td>
       <td>
@@ -78,7 +78,7 @@ const CoinItem = ({coin, index}) => {
         ${coin.market_cap.toLocaleString('en-US')}
       </td>
       <td className='text-right pr-2 button'>
-        <button className='bg-[#f7f7f5] px-4 py-1.5 rounded-md border border-[#595cfd] text-[#595cfd] text-[18px] hover:shadow-xl hover:text-white hover:bg-[#595cfd]'>
+        <button className='bg-[#595cfd] px-4 py-1.5 rounded-md border border-[#595cfd] text-white text-[18px] hover:shadow-xl hover:text-white hover:bg-[#595cfd]'>
           Add
         </button>
       </td>

@@ -9,7 +9,7 @@ const Coins = ({filteredCoins}) => {
         <div className='m-auto container flex justify-center'>
           <table className='w-full'>
             <thead>
-              <tr className='border-b text-left text-xl font-normal'>
+              <tr className='border-b border-[#525252] text-left text-xl font-normal'>
                 <th className='text-lg pl-2 font-normal'>#</th>
                 <th className='text-lg font-semibold'>Name</th>
                 <th className='text-lg hidden sm:table-cell font-semibold'>
@@ -25,7 +25,7 @@ const Coins = ({filteredCoins}) => {
                   24H %
                 </th>
                 <th className='text-lg text-right hidden xl:table-cell font-semibold'>
-                  Marketcap
+                  Market cap
                 </th>
                 <th className='text-lg text-right pr-2 font-semibold'>Watch</th>
               </tr>

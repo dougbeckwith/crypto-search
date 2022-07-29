@@ -13,6 +13,24 @@ const WatchList = () => {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const coinsUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+    const getCoins = async () => {
+      try {
+        const response = await axios.get(coinsUrl)
+        setCoins(response.data)
+        setWatchList(response.data)
+      } catch (err) {
+        navigate('/notfound')
+        console.log(err)
+      }
+    }
+    setIsLoading(true)
+    getCoins()
+
+    // eslint-disable-next-line
+  }, [])
+
   const getCoinsLocalStorage = () => {
     const localCoins = JSON.parse(localStorage.getItem('watchListCoins'))
     return localCoins
@@ -71,24 +89,6 @@ const WatchList = () => {
     setWatchListCoins(filteredStateCoins)
     setIsLoading(false)
   }
-
-  useEffect(() => {
-    const coinsUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false`
-    const getCoins = async () => {
-      try {
-        const response = await axios.get(coinsUrl)
-        setCoins(response.data)
-        setWatchList(response.data)
-      } catch (err) {
-        navigate('/notfound')
-        console.log(err)
-      }
-    }
-    setIsLoading(true)
-    getCoins()
-
-    // eslint-disable-next-line
-  }, [])
 
   return (
     <>
