@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CoinTopCard = ({coin}) => {
   return (
     <div className='w-full rounded-md py-3 px-3 mb-2 bg-[#f7f7f5] flex items-center justify-between'>

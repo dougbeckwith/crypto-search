@@ -1,4 +1,3 @@
-import React from 'react'
 import {useState, useEffect} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import CoinCard from './components/CoinCard'
@@ -13,11 +12,13 @@ const WatchList = () => {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
+  // GET coins and sets WatchList state
   useEffect(() => {
-    const coinsUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false`
     const getCoins = async () => {
       try {
-        const response = await axios.get(coinsUrl)
+        const response = await axios.get(
+          'https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false'
+        )
         setCoins(response.data)
         setWatchList(response.data)
       } catch (err) {
@@ -25,21 +26,23 @@ const WatchList = () => {
         console.log(err)
       }
     }
-    setIsLoading(true)
     getCoins()
 
     // eslint-disable-next-line
   }, [])
 
+  // Get coins local storage
   const getCoinsLocalStorage = () => {
     const localCoins = JSON.parse(localStorage.getItem('watchListCoins'))
     return localCoins
   }
 
+  // Update coins local storage
   const setCoinsLocalStorage = (coins) => {
     localStorage.setItem('watchListCoins', JSON.stringify(coins))
   }
 
+  // Returns array of coins with the coin clicked removed
   const filterCoinClicked = (coin, localCoins) => {
     const filteredLocalCoins = localCoins.filter((localCoin) => {
       return localCoin !== coin.id
@@ -47,6 +50,8 @@ const WatchList = () => {
     return filteredLocalCoins
   }
 
+  // Takes in all (coins array) and uses (localCoins array) to filter through all the coins
+  // and returns a filtered array used for watchlist coin state
   const filterCoinsFromLocalStorageCoins = (coins, localCoins) => {
     const filteredStateCoins = coins.filter((item) => {
       return localCoins.includes(item.id)
@@ -54,6 +59,7 @@ const WatchList = () => {
     return filteredStateCoins
   }
 
+  // Deletes coin from watch list and updates coin watchlist state
   const handleDelete = (coin) => {
     const localCoins = getCoinsLocalStorage()
     const updatedLocalStorageCoins = filterCoinClicked(coin, localCoins)
@@ -65,6 +71,8 @@ const WatchList = () => {
     setWatchList(updatedWatchlistCoins)
   }
 
+  // If user clicks on delete button remove coin from watchlist
+  // If use clicked on card navigate to coin page
   const handleClick = (e, id) => {
     if (
       e.target.tagName === 'svg' ||
@@ -77,10 +85,15 @@ const WatchList = () => {
     }
   }
 
+  // Gets coins from local storage (coins is reponse.data all coins)
+  // If no local coins display EmptyWatchList component
+  // Else set state of watch list coins and display watclist coins list
   const setWatchList = async (coins) => {
     const localCoins = await getCoinsLocalStorage()
     if (localCoins.length === 0) {
       setShowMessage(true)
+      setIsLoading(false)
+      return
     }
     const filteredStateCoins = filterCoinsFromLocalStorageCoins(
       coins,

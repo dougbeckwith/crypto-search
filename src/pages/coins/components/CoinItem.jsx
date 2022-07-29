@@ -1,12 +1,16 @@
-import React from 'react'
 import {v4 as uuidv4} from 'uuid'
 import {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
 const CoinItem = ({coin, index}) => {
   const navigate = useNavigate()
+
+  // State for displaying table row hover styles
   const [hover, setHover] = useState(false)
 
+  // Gets all coins in local storage
+  // Checks if coin is already in local storage
+  // If it's not add coin to local storage
   function saveDataToLocalStorage(coinId) {
     let coins = []
     coins = JSON.parse(localStorage.getItem('watchListCoins')) || []
@@ -21,6 +25,9 @@ const CoinItem = ({coin, index}) => {
     }
   }
 
+  // Check if user clicked on Add to watchlist button
+  // If true add coin to watchlist
+  // Else navigate to the coin page
   const handleClick = (e, id) => {
     if (e.target.textContent === 'Add' && e.target.tagName === 'BUTTON') {
       saveDataToLocalStorage(coin.id)
@@ -29,6 +36,7 @@ const CoinItem = ({coin, index}) => {
     }
   }
 
+  // Handles mouse over table row event to apply styles
   const handleMouseOver = (e) => {
     if (e.target.textContent === 'Add' && e.target.tagName === 'BUTTON') {
       setHover(false)
@@ -38,6 +46,7 @@ const CoinItem = ({coin, index}) => {
       setHover(true)
     }
   }
+  // Handles mouse leaving table row  event
   const handleMouseLeave = () => {
     setHover(false)
   }

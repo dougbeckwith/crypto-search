@@ -1,6 +1,5 @@
-import React from 'react'
-
 const SearchBar = ({setFilteredCoins, coins}) => {
+  // Updates filtered coins state as user types in search input
   const handleChange = (e) => {
     setFilteredCoins(
       coins.filter((coin) => {

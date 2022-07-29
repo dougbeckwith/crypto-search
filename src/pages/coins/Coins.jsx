@@ -13,6 +13,8 @@ const Coins = () => {
   const navigate = useNavigate()
 
   const coinsUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+
+  // GET coins at set coin and filtered coins state
   const getCoins = async () => {
     try {
       const response = await axios.get(coinsUrl)
@@ -25,6 +27,7 @@ const Coins = () => {
     }
   }
 
+  // Run getCoins function on load
   useEffect(() => {
     getCoins()
     // eslint-disable-next-line

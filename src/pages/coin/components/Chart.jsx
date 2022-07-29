@@ -7,6 +7,9 @@ const Graph = ({coinChartData, coin}) => {
   const [dateList, setDateList] = useState([])
   const [priceList, setPriceList] = useState([])
 
+  // Sets state for chart data
+  // sets array of prices
+  // sets array of dates
   const sortData = (data) => {
     data.forEach((item) => {
       setPriceList((prevList) => {
@@ -23,6 +26,7 @@ const Graph = ({coinChartData, coin}) => {
     // eslint-disable-next-line
   }, [])
 
+  // Options for chart data
   const options = {
     scales: {
       x: {
@@ -40,6 +44,8 @@ const Graph = ({coinChartData, coin}) => {
       },
     },
   }
+
+  // Chart data config for line chart
   const chartData = {
     labels: dateList,
     datasets: [

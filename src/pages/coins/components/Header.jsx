@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Header = () => {
   return (
     <div className='flex flex-col justify-center items-center bg-[#f7f7f5] pt-4'>

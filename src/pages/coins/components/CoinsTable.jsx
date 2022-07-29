@@ -1,4 +1,3 @@
-import React from 'react'
 import CoinItem from './CoinItem'
 import {v4 as uuidv4} from 'uuid'
 
