@@ -1,8 +1,6 @@
 import { Fragment } from "react";
 import { Transition } from "@headlessui/react";
-// import { CheckCircleIcon } from "@heroicons/react/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
-// import { XIcon } from "@heroicons/react/solid";
 import { XCircleIcon } from "@heroicons/react/24/solid";
 
 export default function Alert({ show, setShow, message }) {
